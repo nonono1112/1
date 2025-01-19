@@ -2,7 +2,7 @@
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<title> Audio Dataset Labeler</title>
+<title> Audio Dataset Compare v2</title>
 </head>
 <style>
 body {
@@ -337,13 +337,13 @@ function exportCSV() {
 function updateButtons(){
 
 
-		if(personalVote[1][currentIndex+0] === true){document.getElementById('leravote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('leravote').innerHTML="<font color='red'>BAD</font>";}
-		if(personalVote[2][currentIndex+0] === true){document.getElementById('limavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('limavote').innerHTML="<font color='red'>BAD</font>";}
-		if(personalVote[3][currentIndex+0] === true){document.getElementById('dianavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('dianavote').innerHTML="<font color='red'>BAD</font>";}
-		if(personalVote[4][currentIndex+0] === true){document.getElementById('zhaniyavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('zhaniyavote').innerHTML="<font color='red'>BAD</font>";}
-		if(personalVote[5][currentIndex+0] === true){document.getElementById('sonyavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('sonyavote').innerHTML="<font color='red'>BAD</font>";}
-		if(personalVote[6][currentIndex+0] === true){document.getElementById('leriavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('leriavote').innerHTML="<font color='red'>BAD</font>";}
-		if(personalVote[7][currentIndex+0] === true){document.getElementById('kashtankavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('kashtankavote').innerHTML="<font color='red'>BAD</font>";}
+		if(personalVote[1][currentIndex-1] === true){document.getElementById('leravote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('leravote').innerHTML="<font color='red'>BAD</font>";}
+		if(personalVote[2][currentIndex-1] === true){document.getElementById('limavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('limavote').innerHTML="<font color='red'>BAD</font>";}
+		if(personalVote[3][currentIndex-1] === true){document.getElementById('dianavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('dianavote').innerHTML="<font color='red'>BAD</font>";}
+		if(personalVote[4][currentIndex-1] === true){document.getElementById('zhaniyavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('zhaniyavote').innerHTML="<font color='red'>BAD</font>";}
+		if(personalVote[5][currentIndex-1] === true){document.getElementById('sonyavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('sonyavote').innerHTML="<font color='red'>BAD</font>";}
+		if(personalVote[6][currentIndex-1] === true){document.getElementById('leriavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('leriavote').innerHTML="<font color='red'>BAD</font>";}
+		if(personalVote[7][currentIndex-1] === true){document.getElementById('kashtankavote').innerHTML="<font color='green'>GOOD</font>";}else{document.getElementById('kashtankavote').innerHTML="<font color='red'>BAD</font>";}
 
 		drawMap(1);drawMap(2);drawMap(3);drawMap(4);drawMap(5);drawMap(6);drawMap(7);
 
@@ -1037,6 +1037,7 @@ async function loadVotes(url,n) {
         });
 
 	drawMap(n)
+        updateButtons();
         return votes;
     } catch (error) {
         console.error("Error loading or processing CSV:", error);
@@ -1052,15 +1053,18 @@ function init(){
 //        fillVotesWithRandomData();
 //        loadDefautlVotes();
         loadCurrentIndex();
-        drawWaveform();
-        updateButtons();
+
         loadVotes("votes_lera_1k.csv",1);
         loadVotes("votes_lima_1k.csv",2);
         loadVotes("votes_diana_1k.csv",3);
+
         loadVotes("votes_zhaniya_1k.csv",4); 
-        loadVotes("votes_sonya_1k.csv",5); 
-        loadVotes("votes_leria_1k.csv",6); 
-        loadVotes("votes_kashtanka_1k.csv",7); 
+        loadVotes("votes_sonya_1k.csv",5);
+        loadVotes("votes_leria_1k.csv",6);
+        loadVotes("votes_kashtanka_1k.csv",7);
+
+        drawWaveform();
+//        updateButtons();
 
 }
 
